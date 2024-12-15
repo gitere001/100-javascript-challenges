@@ -76,6 +76,7 @@ function clearAll(event) {
   fromCurrencyElement.value = "";
   toCurrencyElement.value = "";
   amountElement.value = "";
+  resultElement.textContent = "";
 }
 function handleFromCurrencyChange() {
   toCurrencyElement.value = "";
