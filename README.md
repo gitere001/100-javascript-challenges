@@ -8,7 +8,8 @@ Each challenge is focused on a different concept, so you can learn while buildin
 
 | Challenge No. | Challenge Name          | GitHub Link                                           |
 |---------------|-------------------------|-------------------------------------------------------|
-| 1             | Currency Converter      | [Link]() |
+| 1             | Currency Converter      | [Link](https://github.com/gitere001/100-javascript-challenges/tree/main/currencyConverter) |
+
 
 
 ## How to Get Started
