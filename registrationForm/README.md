@@ -1,10 +1,10 @@
 # Responsive and Interactive Login & Signup Page
 
 ### Login Page
-![Login Page](images/login-img.png)
+![Login Page](login_img.png)
 
 ### Signup Page
-![Signup Page](images/signup-img.png)
+![Signup Page](signup_img.png)
 
 ## 🌐 Live Demo
 You can view the live version of the project here: [Live Demo](https://signupandloginpages.vercel.app/)
