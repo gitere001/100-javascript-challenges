@@ -1,10 +1,12 @@
 # Responsive and Interactive Login & Signup Page
 
-### Login Page
-![Login Page](login_img.png)
+### Login and Signup Pages
+<div style="display: flex; gap: 20px;">
+  <img src="login_img.png" alt="Login Page" width="300" height="200" />
+  <img src="signup_img.png" alt="Signup Page" width="300" height="200" />
+</div>
 
-### Signup Page
-![Signup Page](signup_img.png)
+
 
 ## 🌐 Live Demo
 You can view the live version of the project here: [Live Demo](https://signupandloginpages.vercel.app/)
