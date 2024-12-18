@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>currency converter</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div class="container">
-		<h1>Currency Converter</h1>
-		<form action="">
-			<label for="amount">Amount</label>
-			<input type="number" name="" id="amount" placeholder="Enter Amount">
-			<label for="from-currency">From Currency</label>
-			<select name="" id="from-currency">
-				<option value="" disabled selected>select currency</option>
-				<option value="kes" class="kes">KES</option>
-				<option value="usd" class="usd">USD</option>
-				<option value="eur" class="eur">EUR</option>
-				<option value="jpy" class="jpy">JPY</option>
-			</select name="" id="from-currency">
-			<label for="to-currency">To Currency</label>
-			<select name="" id="to-currency">
-				<option value="" disabled selected>select currency</option>
-				<option value="kes" class="kes">KES</option>
-				<option value="usd" class="usd">USD</option>
-				<option value="eur" class="eur">EUR</option>
-				<option value="jpy" class="jpy">JPY</option>
-			</select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>currency converter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Currency Converter</h1>
+      <form action="">
+        <label for="amount">Amount</label>
+        <div class="input">
+          <input type="number" name="" id="amount" placeholder="Enter Amount" />
+          <small id="amount-error">Amout is required</small>
+        </div>
+        <label for="from-currency">From Currency</label>
+        <div class="select-from">
+          <select name="" id="from-currency">
+            <option value="" disabled selected>select currency</option>
+            <option value="kes" class="kes">KES</option>
+            <option value="usd" class="usd">USD</option>
+            <option value="eur" class="eur">EUR</option>
+            <option value="jpy" class="jpy">JPY</option>
+          </select>
+          <small id="from-currency-error">From currency is required</small>
+        </div>
+        <label for="to-currency">To Currency</label>
+        <div class="select-to">
+          <select name="" id="to-currency">
+            <option value="" disabled selected>select currency</option>
+            <option value="kes" class="kes">KES</option>
+            <option value="usd" class="usd">USD</option>
+            <option value="eur" class="eur">EUR</option>
+            <option value="jpy" class="jpy">JPY</option>
+          </select>
+          <small id="to-currency-error">To currency is required</small>
+        </div>
 
-			<div class="buttons">
-				<button>Convert</button><button>Clear</button>
-			</div>
-
-		</form>
-		<footer>
-			<p>Converted Amount: <span class="result"></span></p>
-		</footer>
-	</div>
-<script src="style.js"></script>
-</body>
+        <div class="buttons">
+          <button>Convert</button><button>Clear</button>
+        </div>
+      </form>
+      <footer>
+        <p>Converted Amount: <span class="result"></span></p>
+      </footer>
+    </div>
+    <script src="style.js"></script>
+  </body>
 </html>

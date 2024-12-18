@@ -4,16 +4,14 @@ const fromCurrencyElement = document.querySelector("#from-currency");
 const toCurrencyElement = document.querySelector("#to-currency");
 const amountElement = document.querySelector("input");
 const resultElement = document.querySelector(".result");
+const amountBorder = document.querySelector(".input input");
+const amountSmall = document.querySelector(".input small");
 
-function validateInput(inputElement) {
-  const value = inputElement.value.trim();
-  if (!value) {
-    inputElement.style.border = "1px solid red";
-  } else {
-    inputElement.style.border = "none";
-  }
-  return value;
-}
+const fromBOrder = document.querySelector(".select-from select");
+const fromSmall = document.querySelector(".select-from small");
+
+const toBOrder = document.querySelector(".select-to select");
+const toSmall = document.querySelector(".select-to small");
 
 /**
  * Converts an amount of currency from one unit to another.
@@ -54,9 +52,33 @@ function convertCurrency(fromCurrency, toCurrency, amount) {
 
 function displayResult(event) {
   event.preventDefault();
+
   const amount = parseFloat(amountElement.value.trim());
-  const fromCurrency = validateInput(fromCurrencyElement);
-  const toCurrency = validateInput(toCurrencyElement);
+  const fromCurrency = fromCurrencyElement.value.trim();
+  const toCurrency = toCurrencyElement.value.trim();
+  if (!amount) {
+    amountBorder.style.border = "1px solid red";
+    amountSmall.style.display = "block";
+  } else {
+    amountBorder.style.border = "";
+    amountSmall.style.display = "none";
+  }
+
+  if (!fromCurrency) {
+    fromBOrder.style.border = "1px solid red";
+    fromSmall.style.display = "block";
+  } else {
+    fromBOrder.style.border = "";
+    fromSmall.style.display = "none";
+  }
+
+  if (!toCurrency) {
+    toBOrder.style.border = "1px solid red";
+    toSmall.style.display = "block";
+  } else {
+    toBOrder.style.border = "";
+    toSmall.style.display = "none";
+  }
 
   const result = amount
     ? convertCurrency(fromCurrency, toCurrency, amount)
@@ -77,6 +99,13 @@ function clearAll(event) {
   toCurrencyElement.value = "";
   amountElement.value = "";
   resultElement.textContent = "";
+  amountBorder.style.border = "";
+  fromBOrder.style.border = "";
+  toBOrder.style.border = "";
+  amountSmall.style.display = "none";
+  fromSmall.style.display = "none";
+  toSmall.style.display = "none";
+
 }
 function handleFromCurrencyChange() {
   toCurrencyElement.value = "";
