@@ -1,19 +1,18 @@
 # Responsive and Interactive Login & Signup Page
+## 🚀 Overview
+This project features a **responsive** and **interactive** login and signup page built with modern web technologies. It is designed to work seamlessly across devices, ensuring an optimal user experience on desktops, tablets, and smartphones.
 
 ### Login and Signup Pages
 
-<div style="display: flex; gap: 20px; width: 100%;">
-  <img src="login_img.png" alt="Login Page" style="flex: 1;" width="300" height="200" />
-  <img src="signup_img.png" alt="Signup Page" style="flex: 1;" width="300" height="200" />
+<div style="display: flex; gap: 20px; width: 800px;">
+    <img src="login_img.png" alt="Login Page" style="flex: 1; width: 390px; height: 300px;" />
+    <img src="signup_img.png" alt="Signup Page" style="flex: 1; width: 390px; height: 300px;" />
 </div>
+
 
 ## 🌐 Live Demo
 
 You can view the live version of the project here: [Live Demo](https://signupandloginpages.vercel.app/)
-
-## 🚀 Overview
-
-This project features a **responsive** and **interactive** login and signup page built with modern web technologies. It is designed to work seamlessly across devices, ensuring an optimal user experience on desktops, tablets, and smartphones.
 
 ## 🌟 Features
 
