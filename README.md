@@ -6,9 +6,10 @@ Each challenge is focused on a different concept, so you can learn while buildin
 
 ## Challenges List
 
-| Challenge No. | Challenge Name          | GitHub Link                                           |
-|---------------|-------------------------|-------------------------------------------------------|
-| 1             | Currency Converter      | [Link](https://github.com/gitere001/100-javascript-challenges/tree/main/currencyConverter) |
+| Challenge No. | Challenge Name        | GitHub Link                                                                                 | Live Link                                                       |
+|---------------|-----------------------|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| 1             | Currency Converter     | [Github Source Code](https://github.com/gitere001/100-javascript-challenges/tree/main/currencyConverter) | [Live](https://currencyconverter-blond.vercel.app/)            |
+| 2             | Js Keys Logger         | [Github Source Code](https://github.com/gitere001/100-javascript-challenges/tree/main/javascriptKeyInfo) | [Live](https://jskeyslogger.vercel.app/)                       |
 
 
 
