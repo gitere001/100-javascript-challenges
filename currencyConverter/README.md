@@ -1,5 +1,15 @@
 # Currency Converter
 
+
+## screenshot
+
+<div style="display: flex; gap: 20px; width: 100%;">
+   <img src="currencyConverter.png" alt="Currency Converter" style="flex: 1;" width="300" height="200" />
+</div>
+## 🌐 Live Demo
+
+You can view the live version of the project here: [Live Demo](https://currencyconverter-blond.vercel.app/)
+
 ## Overview
 
 The **Currency Converter** is a web application that allows users to convert an amount from one currency to another. The app supports multiple currencies including **KES (Kenyan Shilling)**, **USD (US Dollar)**, **EUR (Euro)**, and **JPY (Japanese Yen)**. Users can input an amount in their desired currency, select the currencies for conversion, and view the result instantly.
@@ -15,16 +25,16 @@ The app includes validation to ensure users input valid values, and the interfac
 
 ## How It Works
 
-1. **Currency Conversion**: 
+1. **Currency Conversion**:
    - Users select the currency to convert from (`fromCurrency`) and the currency to convert to (`toCurrency`).
    - The user enters the amount they want to convert.
    - Once the **Convert** button is clicked, the app calculates the converted amount using predefined exchange rates and displays the result.
-  
-2. **Validation**: 
+
+2. **Validation**:
    - If the amount field is left empty, it will be highlighted in red to indicate an invalid input.
    - The app prevents selecting the same currency for both "From Currency" and "To Currency" by hiding the option in the "To Currency" dropdown.
-  
-3. **Clear Option**: 
+
+3. **Clear Option**:
    - When the **Clear** button is clicked, all input fields are cleared, and the result area is reset.
 
 ## Supported Currencies
