@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const toSignUpPage = document.querySelector(".signup-link p a");
 
   toSignUpPage.addEventListener("click", () => {
-    window.location.href = "signup.html";
+    window.location.href = "index.html";
   });
 
   function togglePasswordVisibility() {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const response = JSON.stringify({
     success: true,
-    
+
   });
 
   function fetchLoginResponse() {
