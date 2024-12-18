@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="signup.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="popup" id="submit-modal">
+      <img src="404-tick.png" alt="">
+      <h1>Thank you!</h1>
+      <p>Your details has being submitted successfully. Thanks</p>
+      <button>Ok</button>
+
+    </div>
+    <main>
+      <header>
+        <h1>Sign up for SkillUp</h1>
+        <p>create a free account or <a href="#">login</a></p>
+      </header>
+      <form action="">
+        <fieldset>
+          <label for="email">Email</label>
+          <input type="email" name="" id="email" />
+          <small id="error-email">Enter Valid Email</small>
+        </fieldset>
+        <fieldset>
+          <label for="username">username</label>
+          <input type="text" name="" id="username" />
+          <small id="error-username">Must be atleast 3 characters</small>
+        </fieldset>
+        <fieldset>
+          <label for="password">Password</label>
+          <input type="password" name="" id="password" />
+          <span>
+            <i class="fas fa-eye"></i>
+            <span id="toggle-password" class="show">Show</span>
+          </span>
+          <small id="error-password">Enter Valid Password</small>
+          <!-- <div class="password-criteria">
+            <p id="criteria-length">🔴 At least 8 characters</p>
+            <p id="criteria-uppercase">🔴 At least 1 uppercase letter</p>
+            <p id="criteria-lowercase">🔴 At least 1 lowercase letter</p>
+            <p id="criteria-number">🔴 At least 1 number</p>
+            <p id="criteria-special">🔴 At least 1 special character (@$!%*?&)</p>
+          </div> -->
+        </fieldset>
+        <div class="checkbox">
+          <input type="checkbox" name="" id="" />
+          <p>
+            I dont want to receive emails about SkillUp and related products,
+            marketings and offers
+          </p>
+        </div>
+        <p>
+          By signing up, you agree to the <a href="#">Terms</a> and have read
+          and acknowledge the <a href="#">Privacy Policy</a>
+        </p>
+        <button type="submit" id="submit">Sign Up</button>
+      </form>
+    </main>
+    <script src="signup.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>

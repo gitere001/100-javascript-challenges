@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+:root {
+  --primary: #027b8b;
+  --dark: #252623;
+  --accent: #047f8c;
+  --light: #cccccc;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: aliceblue;
+}
+.popup {
+  background-color: white;
+  max-width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  visibility: hidden;
+  text-align: center;
+  padding: 0 20px 20px;
+  font-family: "poppins", sans-serif;
+  transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+}
+.popup-display {
+  transform: translate(-50%, -50%) scale(1);
+  visibility: visible;
+  opacity: 1;
+}
+.popup button {
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+  background-color: #5db761;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.popup img {
+  width: 100px;
+  margin-top: -50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+.popup h1 {
+  margin: 30px 0 10px;
+  font-size: 38px;
+  font-weight: 500;
+}
+.popup p {
+  padding-bottom: 20px;
+  font-size: 16px;
+}
+
+main {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  /* display: none; */
+}
+
+header {
+  text-align: center;
+}
+
+header > h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 24px;
+  margin-bottom: 3px;
+}
+
+header > p {
+  color: var(--dark);
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+header > p > a {
+  color: var(--accent);
+  
+}
+
+fieldset {
+  border: none;
+  position: relative;
+}
+
+fieldset > small {
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  color: red;
+  transform: translate(-50%);
+  display: none;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid var(--light);
+  border-radius: 2px;
+  outline: none;
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 40px;
+  height: 20px;
+  border: 1px solid var(--light);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--white);
+  outline: none;
+}
+
+.checkbox input[type="checkbox"]::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\F00c";
+  font-size: 18px;
+  color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+}
+
+.checkbox input[type="checkbox"]:checked {
+  background-color: green;
+}
+
+form > p a {
+  color: var(--accent);
+}
+
+form > button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--accent);
+  outline: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 15px;
+}
+
+form > button:hover {
+  opacity: 0.8;
+}
+
+fieldset:nth-of-type(3) {
+  position: relative;
+}
+
+fieldset:nth-of-type(3) > span {
+  position: absolute;
+  top: 0;
+  right: 2%;
+  cursor: pointer;
+  color: #027b8b;
+  font-weight: bold;
+}

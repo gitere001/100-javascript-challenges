@@ -1,0 +1,223 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: aliceblue;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.feeback-messages {
+  padding: 10px 20px;
+  position: absolute;
+  top: 1vh;
+  left: 50%;
+  transform: translate(-50%);
+  color: aliceblue;
+  border-radius: 10px;
+  width: max-content;
+  text-align: center;
+}
+.error {
+  background-color: red;
+}
+.success {
+  background-color: green;
+}
+.container {
+  width: 100%;
+  max-width: 400px;
+}
+main {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+main h1 {
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-align: center;
+}
+fieldset {
+  border: none;
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+fieldset label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+small {
+  position: absolute;
+  bottom: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  display: none;
+}
+.password-input {
+  position: relative;
+}
+.password-input .fa {
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  transform: translateY(-50%);
+}
+
+label[for="remember"] {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+label[for="remember"] input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  appearance: none; /* Removes default checkbox styles */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+label[for="remember"] input[type="checkbox"]:checked {
+  background-color: #027b8b;
+  border-color: #4caf50;
+  position: relative;
+}
+label[for="remember"] input[type="checkbox"]:checked::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\F00c";
+  font-size: 18px;
+  color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+button[type="submit"] {
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  background-color: #027b8b;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+button[type="submit"]:hover {
+  opacity: 0.8;
+}
+a {
+  color: #027b8b;
+}
+main > a {
+  text-decoration: none;
+  align-self: flex-end;
+  margin-bottom: 50px;
+}
+.seperator-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+}
+.seperator-line::before,
+.seperator-line::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background-color: #969696;
+}
+.seperator-line::before {
+  width: calc((100% - 24px - 2px) / 2);
+
+  left: 0;
+}
+.seperator-line::after {
+  width: calc((100% - 24px - 2px) / 2);
+
+  right: 0;
+}
+.seperator-line span {
+  position: absolute;
+  padding: 3px;
+  color: #6e6d6d;
+  z-index: 999;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.signup-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.signup-link a {
+  margin-left: 10px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.socials span {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border: 2px solid;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.socials span:nth-child(1) {
+  border-color: #1877f2;
+}
+.socials span:nth-child(2) {
+  border-color: #f58529;
+}
+.socials span:nth-child(3) {
+  border-color: #0077b5;
+}
+.socials span i {
+  font-size: 18px;
+  font-weight: 900;
+}
+.socials span:hover {
+  cursor: pointer;
+}
+.fa-facebook-f {
+  color: #1877f2;
+}
+.fa-instagram {
+  color: #f58529;
+}
+.fa-linkedin-in {
+  color: #0077b5;
+}

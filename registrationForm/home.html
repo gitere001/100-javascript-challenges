@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Back Button</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Back Button Styling */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px; /* Space between icon and text */
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #4CAF50; /* Green background */
+      border: none;
+      border-radius: 5px;
+      text-decoration: none; /* Remove underline */
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-button i {
+      font-size: 18px; /* Size of the Font Awesome icon */
+    }
+
+    /* Hover and active effects */
+    .back-button:hover {
+      background-color: #45a049; /* Slightly darker green */
+      transform: scale(1.05); /* Slightly enlarge */
+    }
+
+    .back-button:active {
+      transform: scale(0.95); /* Slightly shrink */
+    }
+	a {
+		position: absolute;
+		top: 1.5vh;
+		left: 1vw;
+	}
+	body {
+		background-color: #262626;
+
+
+	}
+	img {
+		position: absolute;
+		background-color: #262626;
+		max-width: 500px;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+  </style>
+</head>
+<body>
+  <!-- Back Button -->
+
+  <img src="background1.png" alt="">
+  <a href="#" class="back-button">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+<script>
+	const backBtn = document.querySelector('.back-button');
+	backBtn.addEventListener('click', () => {
+		window.history.back();
+	});
+</script>
+</body>
+</html>
