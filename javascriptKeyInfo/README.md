@@ -1,19 +1,19 @@
 # JS Key Logger
-
-## screenshot
-
-<div style="display: flex; gap: 20px; width: 100%;">
-	<img src="keyLogger.png" alt="Key Logger" style="flex: 1;" width="300" height="200" />
-</div>
-## 🌐 Live Demo
-
-You can view the live version of the project here: [Live Demo](https://jskeyslogger.vercel.app/)
-
 ## Overview
 
 **JS Key Logger** is a web application that captures and displays detailed information about the keys pressed on the keyboard. It provides real-time data for various keys, including their **code**, **keycode**, and **location**. This app is designed for desktop and laptop devices, and it prevents default actions for specific keys such as **Tab**, **Meta**, **Alt**, and certain function keys (**F1**, **F3**, **F5**, **F6**, **F7**, **F10**).
 
 The primary purpose of this app is to give users insight into how keyboard events are processed by the browser. It is useful for developers or users who want to understand the underlying details of key events.
+
+## screenshot
+
+<div style="display: flex; gap: 20px; width: 100%;">
+	<img src="keyLogger.png" alt="Key Logger" style="flex: 1;" width="600" height="300" />
+</div>
+
+## 🌐 Live Demo
+
+You can view the live version of the project here: [Live Demo](https://jskeyslogger.vercel.app/)
 
 ## Features
 
