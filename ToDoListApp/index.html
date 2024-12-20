@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="add-task-modal">
+      <p class="message-feedback">Task Added Successfully</p>
+      <fieldset>
+        <label for="task-title">Task Title</label>
+        <input
+          type="text"
+          id="task-title"
+          name="task-title"
+          placeholder="Enter task title"
+          maxlength="70"
+          required
+        />
+        <small class="title-error">Title is required</small>
+      </fieldset>
+
+      <fieldset>
+        <label for="task-description">Task Description(optional)</label>
+        <textarea
+          id="task-description"
+          name="task-description"
+          placeholder="Enter  task Description"
+          maxlength="100"
+        ></textarea>
+      </fieldset>
+
+      <fieldset>
+        <label for="priority">Priority</label>
+        <select name="priority" id="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="urgent">Urgent</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label for="category">Category</label>
+        <select name="category" id="category">
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="health">Health</option>
+          <option value="finance">Finance</option>
+          <option value="education">Education</option>
+          <option value="other">Other</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label for="due-date">Due Date And Time</label>
+        <input type="datetime-local" name="due-date" id="due-date" required />
+        <small class="due-date-error">Due Date is required</small>
+      </fieldset>
+
+      <div class="buttons">
+        <button class="btn" id="close-modal-btn">Close</button>
+        <button class="btn" id="submit-task">Add</button>
+      </div>
+    </div>
+
+    <header>
+      <img src="logo.webp" alt="" />
+      <div class="title">
+        <h1>Todo List</h1>
+        <p>December 18, 2024</p>
+      </div>
+      <button class="btn" id="add-task-btn">+ Add Task</button>
+    </header>
+    <main>
+      <section class="filters">
+        <fieldset>
+          <label for="task-time-period">Time Period</label>
+          <select name="" id="task-time-period">
+            <option value="today">Today's Task</option>
+            <option value="past-week">Past Week</option>
+            <option value="all" selected>All Tasks</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label for="status">Status</label>
+          <select name="" id="status">
+            <option value="all-status">All Status</option>
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed" selected>Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </fieldset>
+      </section>
+      <section class="task-display">
+        <div class="no-task">
+          <p>No Task Found</p>
+        </div>
+        <div class="task-card">
+          <div class="task-title">
+            <h2>Complete the JavaScript functions module.</h2>
+            <p>HIGH</p>
+          </div>
+          <p>
+            Complete the exercises for JavaScript functions, including writing
+            your own functions for practice.
+          </p>
+          <div class="task-details">
+            <p>
+              <i class="fas fa-clock"></i>
+              <span>12/19/2024 12:30 pm</span>
+            </p>
+            <p><i class="fas fa-wallet"></i> Education</p>
+            <p><i class="fas fa-exclamation-circle"></i> In Progress</p>
+          </div>
+          <div class="task-actions">
+            <select name="" id="task-status-update">
+              <option value="" selected disabled>Update Status</option>
+              <option value="task-status-update-not-started">
+                Not Started
+              </option>
+              <option value="task-status-update-inprogress">In Progress</option>
+              <option value="task-status-update-completed">Completed</option>
+              <option value="task-status-update-cancelled">Cancelled</option>
+            </select>
+            <button id="edit-task" class="edit-task-btn">Edit task</button>
+            <button id="delete-task">Delete Task</button>
+          </div>
+        </div>
+
+        <!-- <div class="task-card">
+          <div class="task-title">
+            <h2>Finish review of JavaScript concepts.</h2>
+            <p>MEDIUM</p>
+          </div>
+          <p>
+            Read through the notes on closures, promises, and async/await, then
+            test concepts with examples.
+          </p>
+          <div class="task-details">
+            <p><i class="fas fa-clock"></i> 12/23/2024</p>
+            <p><i class="fas fa-wallet"></i> Education</p>
+            <p><i class="fas fa-exclamation-circle"></i> Not Started</p>
+          </div>
+          <div class="task-actions">
+            <select name="" id="task-status-update">
+              <option value="" selected disabled>Update Status</option>
+              <option value="task-status-update-not-started">
+                Not Started
+              </option>
+              <option value="task-status-update-inprogress">In Progress</option>
+              <option value="task-status-update-completed">Completed</option>
+              <option value="task-status-update-cancelled">Cancelled</option>
+            </select>
+            <button id="edit-task">Edit task</button>
+            <button id="delete-task">Delete Task</button>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">
+            <h2>Work on JavaScript Object-Oriented Programming.</h2>
+            <p>LOW</p>
+          </div>
+          <p>No description</p>
+          <div class="task-details">
+            <p><i class="fas fa-clock"></i> 12/25/2024</p>
+            <p><i class="fas fa-wallet"></i> Education</p>
+            <p><i class="fas fa-exclamation-circle"></i> Not Started</p>
+          </div>
+          <div class="task-actions">
+            <select name="" id="task-status-update">
+              <option value="" selected disabled>Update Status</option>
+              <option value="task-status-update-not-started">
+                Not Started
+              </option>
+              <option value="task-status-update-inprogress">In Progress</option>
+              <option value="task-status-update-completed">Completed</option>
+              <option value="task-status-update-cancelled">Cancelled</option>
+            </select>
+            <button id="edit-task">Edit task</button>
+            <button id="delete-task">Delete Task</button>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">
+            <h2>Start studying JavaScript ES6 features.</h2>
+            <p>HIGH</p>
+          </div>
+          <p>
+            Learn about arrow functions, template literals, destructuring, and
+            other ES6 features.
+          </p>
+          <div class="task-details">
+            <p><i class="fas fa-clock"></i> 12/26/2024</p>
+            <p><i class="fas fa-wallet"></i> Education</p>
+            <p><i class="fas fa-exclamation-circle"></i> In Progress</p>
+          </div>
+          <div class="task-actions">
+            <select name="" id="task-status-update">
+              <option value="" selected disabled>Update Status</option>
+              <option value="task-status-update-not-started">
+                Not Started
+              </option>
+              <option value="task-status-update-inprogress">In Progress</option>
+              <option value="task-status-update-completed">Completed</option>
+              <option value="task-status-update-cancelled">Cancelled</option>
+            </select>
+            <button id="edit-task">Edit task</button>
+            <button id="delete-task">Delete Task</button>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">
+            <h2>Complete the JavaScript array exercises.</h2>
+            <p>MEDIUM</p>
+          </div>
+          <p>No description</p>
+          <div class="task-details">
+            <p><i class="fas fa-clock"></i> 12/27/2024</p>
+            <p><i class="fas fa-wallet"></i> Education</p>
+            <p><i class="fas fa-exclamation-circle"></i> Completed</p>
+          </div>
+          <div class="task-actions">
+            <select name="" id="task-status-update">
+              <option value="" selected disabled>Update Status</option>
+              <option value="task-status-update-not-started">
+                Not Started
+              </option>
+              <option value="task-status-update-inprogress">In Progress</option>
+              <option value="task-status-update-completed">Completed</option>
+              <option value="task-status-update-cancelled">Cancelled</option>
+            </select>
+            <button id="edit-task">Edit task</button>
+            <button id="delete-task">Delete Task</button>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">
+            <h2>Review JavaScript callback functions.</h2>
+            <p>LOW</p>
+          </div>
+          <p>
+            Understand the concept of callbacks and write some examples of
+            asynchronous functions.
+          </p>
+          <div class="task-details">
+            <p><i class="fas fa-clock"></i> 12/30/2024</p>
+            <p><i class="fas fa-wallet"></i> Education</p>
+            <p><i class="fas fa-exclamation-circle"></i> In Progress</p>
+          </div>
+          <div class="task-actions">
+            <select name="" id="task-status-update">
+              <option value="" selected disabled>Update Status</option>
+              <option value="task-status-update-not-started">
+                Not Started
+              </option>
+              <option value="task-status-update-inprogress">In Progress</option>
+              <option value="task-status-update-completed">Completed</option>
+              <option value="task-status-update-cancelled">Cancelled</option>
+            </select>
+            <button id="edit-task">Edit task</button>
+            <button id="delete-task">Delete Task</button>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-title">
+            <h2>Finish reading JavaScript async/await section.</h2>
+            <p>HIGH</p>
+          </div>
+          <p>
+            Learn the differences between promises and async/await, and write
+            some sample code for practice.
+          </p>
+          <div class="task-details">
+            <p><i class="fas fa-clock"></i> 01/02/2025</p>
+            <p><i class="fas fa-wallet"></i> Education</p>
+            <p><i class="fas fa-exclamation-circle"></i> Not Started</p>
+          </div>
+          <div class="task-actions">
+            <select name="" id="task-status-update">
+              <option value="" selected disabled>Update Status</option>
+              <option value="task-status-update-not-started">
+                Not Started
+              </option>
+              <option value="task-status-update-inprogress">In Progress</option>
+              <option value="task-status-update-completed">Completed</option>
+              <option value="task-status-update-cancelled">Cancelled</option>
+            </select>
+            <button id="edit-task">Edit task</button>
+            <button id="delete-task">Delete Task</button>
+          </div>
+        </div> -->
+      </section>
+    </main>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
