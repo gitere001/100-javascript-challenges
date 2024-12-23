@@ -244,12 +244,10 @@ fieldset {
   margin-bottom: 10px;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 10px;
   font-style: italic;
 }
-.task-details p:nth-child(2) i {
-  display: none;
-}
+
 
 
 .task-actions {
