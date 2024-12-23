@@ -31,7 +31,7 @@
         <small class="title-error">Title is required</small>
       </fieldset>
 
-      <fieldset>
+      <!-- <fieldset>
         <label for="task-description">Task Description(optional)</label>
         <textarea
           id="task-description"
@@ -39,7 +39,7 @@
           placeholder="Enter  task Description"
           maxlength="100"
         ></textarea>
-      </fieldset>
+      </fieldset> -->
 
       <fieldset>
         <label for="priority">Priority</label>
@@ -105,206 +105,6 @@
         </fieldset>
       </section>
       <section class="task-display">
-        
-        <!-- <div class="task-card">
-          <div class="task-title">
-            <h2>Complete the JavaScript functions module.</h2>
-            <p>HIGH</p>
-          </div>
-          <p>
-            Complete the exercises for JavaScript functions, including writing
-            your own functions for practice.
-          </p>
-          <div class="task-details">
-            <p>
-              <i class="fas fa-clock"></i>
-              <span>12/19/2024 12:30 pm</span>
-            </p>
-            <p><i class="fas fa-wallet"></i> Education</p>
-            <p><i class="fas fa-exclamation-circle"></i> In Progress</p>
-          </div>
-          <div class="task-actions">
-            <select name="" id="task-status-update">
-              <option value="" selected disabled>Update Status</option>
-              <option value="task-status-update-not-started">
-                Not Started
-              </option>
-              <option value="task-status-update-inprogress">In Progress</option>
-              <option value="task-status-update-completed">Completed</option>
-              <option value="task-status-update-cancelled">Cancelled</option>
-            </select>
-            <button id="edit-task" class="edit-task-btn">Edit task</button>
-            <button id="delete-task">Delete Task</button>
-          </div>
-        </div> -->
-
-        <!-- <div class="task-card">
-          <div class="task-title">
-            <h2>Finish review of JavaScript concepts.</h2>
-            <p>MEDIUM</p>
-          </div>
-          <p>
-            Read through the notes on closures, promises, and async/await, then
-            test concepts with examples.
-          </p>
-          <div class="task-details">
-            <p><i class="fas fa-clock"></i> 12/23/2024</p>
-            <p><i class="fas fa-wallet"></i> Education</p>
-            <p><i class="fas fa-exclamation-circle"></i> Not Started</p>
-          </div>
-          <div class="task-actions">
-            <select name="" id="task-status-update">
-              <option value="" selected disabled>Update Status</option>
-              <option value="task-status-update-not-started">
-                Not Started
-              </option>
-              <option value="task-status-update-inprogress">In Progress</option>
-              <option value="task-status-update-completed">Completed</option>
-              <option value="task-status-update-cancelled">Cancelled</option>
-            </select>
-            <button id="edit-task">Edit task</button>
-            <button id="delete-task">Delete Task</button>
-          </div>
-        </div>
-
-        <div class="task-card">
-          <div class="task-title">
-            <h2>Work on JavaScript Object-Oriented Programming.</h2>
-            <p>LOW</p>
-          </div>
-          <p>No description</p>
-          <div class="task-details">
-            <p><i class="fas fa-clock"></i> 12/25/2024</p>
-            <p><i class="fas fa-wallet"></i> Education</p>
-            <p><i class="fas fa-exclamation-circle"></i> Not Started</p>
-          </div>
-          <div class="task-actions">
-            <select name="" id="task-status-update">
-              <option value="" selected disabled>Update Status</option>
-              <option value="task-status-update-not-started">
-                Not Started
-              </option>
-              <option value="task-status-update-inprogress">In Progress</option>
-              <option value="task-status-update-completed">Completed</option>
-              <option value="task-status-update-cancelled">Cancelled</option>
-            </select>
-            <button id="edit-task">Edit task</button>
-            <button id="delete-task">Delete Task</button>
-          </div>
-        </div>
-
-        <div class="task-card">
-          <div class="task-title">
-            <h2>Start studying JavaScript ES6 features.</h2>
-            <p>HIGH</p>
-          </div>
-          <p>
-            Learn about arrow functions, template literals, destructuring, and
-            other ES6 features.
-          </p>
-          <div class="task-details">
-            <p><i class="fas fa-clock"></i> 12/26/2024</p>
-            <p><i class="fas fa-wallet"></i> Education</p>
-            <p><i class="fas fa-exclamation-circle"></i> In Progress</p>
-          </div>
-          <div class="task-actions">
-            <select name="" id="task-status-update">
-              <option value="" selected disabled>Update Status</option>
-              <option value="task-status-update-not-started">
-                Not Started
-              </option>
-              <option value="task-status-update-inprogress">In Progress</option>
-              <option value="task-status-update-completed">Completed</option>
-              <option value="task-status-update-cancelled">Cancelled</option>
-            </select>
-            <button id="edit-task">Edit task</button>
-            <button id="delete-task">Delete Task</button>
-          </div>
-        </div>
-
-        <div class="task-card">
-          <div class="task-title">
-            <h2>Complete the JavaScript array exercises.</h2>
-            <p>MEDIUM</p>
-          </div>
-          <p>No description</p>
-          <div class="task-details">
-            <p><i class="fas fa-clock"></i> 12/27/2024</p>
-            <p><i class="fas fa-wallet"></i> Education</p>
-            <p><i class="fas fa-exclamation-circle"></i> Completed</p>
-          </div>
-          <div class="task-actions">
-            <select name="" id="task-status-update">
-              <option value="" selected disabled>Update Status</option>
-              <option value="task-status-update-not-started">
-                Not Started
-              </option>
-              <option value="task-status-update-inprogress">In Progress</option>
-              <option value="task-status-update-completed">Completed</option>
-              <option value="task-status-update-cancelled">Cancelled</option>
-            </select>
-            <button id="edit-task">Edit task</button>
-            <button id="delete-task">Delete Task</button>
-          </div>
-        </div>
-
-        <div class="task-card">
-          <div class="task-title">
-            <h2>Review JavaScript callback functions.</h2>
-            <p>LOW</p>
-          </div>
-          <p>
-            Understand the concept of callbacks and write some examples of
-            asynchronous functions.
-          </p>
-          <div class="task-details">
-            <p><i class="fas fa-clock"></i> 12/30/2024</p>
-            <p><i class="fas fa-wallet"></i> Education</p>
-            <p><i class="fas fa-exclamation-circle"></i> In Progress</p>
-          </div>
-          <div class="task-actions">
-            <select name="" id="task-status-update">
-              <option value="" selected disabled>Update Status</option>
-              <option value="task-status-update-not-started">
-                Not Started
-              </option>
-              <option value="task-status-update-inprogress">In Progress</option>
-              <option value="task-status-update-completed">Completed</option>
-              <option value="task-status-update-cancelled">Cancelled</option>
-            </select>
-            <button id="edit-task">Edit task</button>
-            <button id="delete-task">Delete Task</button>
-          </div>
-        </div>
-
-        <div class="task-card">
-          <div class="task-title">
-            <h2>Finish reading JavaScript async/await section.</h2>
-            <p>HIGH</p>
-          </div>
-          <p>
-            Learn the differences between promises and async/await, and write
-            some sample code for practice.
-          </p>
-          <div class="task-details">
-            <p><i class="fas fa-clock"></i> 01/02/2025</p>
-            <p><i class="fas fa-wallet"></i> Education</p>
-            <p><i class="fas fa-exclamation-circle"></i> Not Started</p>
-          </div>
-          <div class="task-actions">
-            <select name="" id="task-status-update">
-              <option value="" selected disabled>Update Status</option>
-              <option value="task-status-update-not-started">
-                Not Started
-              </option>
-              <option value="task-status-update-inprogress">In Progress</option>
-              <option value="task-status-update-completed">Completed</option>
-              <option value="task-status-update-cancelled">Cancelled</option>
-            </select>
-            <button id="edit-task">Edit task</button>
-            <button id="delete-task">Delete Task</button>
-          </div>
-        </div> -->
       </section>
     </main>
     <script src="script.js" type="module"></script>

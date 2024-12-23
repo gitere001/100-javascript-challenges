@@ -251,9 +251,10 @@ fieldset {
   margin-bottom: 10px;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 11px;
   font-style: italic;
 }
+
 
 .task-actions {
   display: flex;
@@ -364,7 +365,11 @@ fieldset {
   margin-right: 5px;
 }
 
-
+@media (min-width: 383px) {
+  .task-details {
+    font-size: 13px;
+  }
+}
 @media (min-width: 745px) {
   .no-task {
     min-height: 200px;

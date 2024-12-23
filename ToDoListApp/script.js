@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
-const textArea = document.getElementById("task-description");
+// const textArea = document.getElementById("task-description");
 const addTaskBtn = document.getElementById("add-task-btn");
 const addTaskModal = document.querySelector(".add-task-modal");
 const closeModalBtn = document.querySelector("#close-modal-btn");
@@ -12,7 +12,7 @@ const taskStatusUpdateSelect = document.getElementById("task-status-update");
 const taskTitleInput = document.getElementById("task-title");
 const titleError = document.querySelector(".title-error");
 
-const taskDescriptionInput = document.getElementById("task-description");
+// const taskDescriptionInput = document.getElementById("task-description");
 const priorityInput = document.getElementById("priority");
 const categoryInput = document.getElementById("category");
 const dueDateInput = document.getElementById("due-date");
@@ -200,7 +200,7 @@ function createNewTaskCard(task) {
   }
 
   const taskTitle = task.title;
-  const taskDescription = task.description.trim() || "No Description";
+  // const taskDescription = task.description.trim() || "No Description";
   const taskPriority = task.priority;
   const taskDueDate = task.dueDate
     ? getDate(task.dueDate).replace("-", "/").replace("-", "/")
@@ -232,9 +232,9 @@ function createNewTaskCard(task) {
   titleSection.appendChild(titleSectionPriority);
   newDiv.appendChild(titleSection);
 
-  const descriptionP = document.createElement("p");
-  descriptionP.textContent = taskDescription;
-  newDiv.appendChild(descriptionP);
+  // const descriptionP = document.createElement("p");
+  // descriptionP.textContent = taskDescription;
+  // newDiv.appendChild(descriptionP);
 
   const taskDetailsDiv = document.createElement("div");
   taskDetailsDiv.classList.add("task-details");
@@ -318,16 +318,16 @@ function createNewTaskCard(task) {
   return newDiv;
 }
 
-function updateSelectedOption(filterElement) {
-  Array.from(filterElement.children).forEach((option) => {
-    // Set the 'selected' attribute for the matching option
-    if (option.value === filterElement.value) {
-      option.setAttribute("selected", ""); // Explicitly set the 'selected' attribute
-    } else {
-      option.removeAttribute("selected"); // Remove 'selected' from non-matching options
-    }
-  });
-}
+// function updateSelectedOption(filterElement) {
+//   Array.from(filterElement.children).forEach((option) => {
+//     // Set the 'selected' attribute for the matching option
+//     if (option.value === filterElement.value) {
+//       option.setAttribute("selected", ""); // Explicitly set the 'selected' attribute
+//     } else {
+//       option.removeAttribute("selected"); // Remove 'selected' from non-matching options
+//     }
+//   });
+// }
 function displayNoTasksFound() {
   tasksContainer.innerHTML = "";
   const noTaskDiv = document.createElement("div");
@@ -357,8 +357,8 @@ function submitTask(e) {
   if (isNewTask) {
     const filterStatusValue = statusFilterElement.value;
     const title = sanitizeInput(taskTitleInput.value);
-    const description =
-      sanitizeInput(taskDescriptionInput.value) || "No Description";
+    // const description =
+    //   sanitizeInput(taskDescriptionInput.value) || "No Description";
     const priority = priorityInput.value.trim();
     const category = categoryInput.value.trim();
     const dueDate = dueDateInput.value.trim();
@@ -371,7 +371,7 @@ function submitTask(e) {
         const task = {
           id: uuidv4(),
           title,
-          description,
+          // description,
           priority,
           category,
           dueDate,
@@ -407,7 +407,7 @@ function submitTask(e) {
           messageFeedBack.textContent = "";
           messageFeedBack.classList.remove("success");
           taskTitleInput.value = "";
-          taskDescriptionInput.value = "";
+          // taskDescriptionInput.value = "";
           dueDateInput.value = "";
           priorityInput.selected = "";
           categoryInput.selected = "";
@@ -431,7 +431,7 @@ function submitTask(e) {
 
 function clearAddItemsModal() {
   taskTitleInput.value = "";
-  taskDescriptionInput.value = "";
+  // taskDescriptionInput.value = "";
   priorityInput.value = "medium";
   categoryInput.value = "personal";
   dueDateInput.value = "";
@@ -457,10 +457,10 @@ function updateMinDate(formated) {
   return formatedDate;
 }
 
-textArea.addEventListener("input", () => {
-  textArea.style.height = "auto";
-  textArea.style.height = `${Math.min(textArea.scrollHeight, 100)}px`;
-});
+// textArea.addEventListener("input", () => {
+//   textArea.style.height = "auto";
+//   textArea.style.height = `${Math.min(textArea.scrollHeight, 100)}px`;
+// });
 taskTitleInput.addEventListener("input", () => {
   if (taskTitleInput.value.trim()) {
     taskTitleInput.style.border = "1px solid #ccc";
@@ -486,14 +486,14 @@ tasksContainer.addEventListener("click", (event) => {
     const category = closestCard.querySelector(
       ".task-details p:nth-child(2)"
     ).textContent;
-    const description = closestCard.querySelector(".task-card > p").textContent;
+    // const description = closestCard.querySelector(".task-card > p").textContent;
     const duedate = closestCard.querySelector(
       ".task-details p:nth-child(1) span"
     ).textContent;
     addTaskModal.style.display = "block";
     taskTitleInput.value = title;
-    taskDescriptionInput.value =
-      description === "No Description" ? "" : description;
+    // taskDescriptionInput.value =
+    //   description === "No Description" ? "" : description;
     priorityInput.value = priority;
     categoryInput.value = category;
     dueDateInput.value = updateMinDate(duedate);
@@ -505,8 +505,8 @@ tasksContainer.addEventListener("click", (event) => {
       const updatedDetails = {
         id,
         title: sanitizeInput(taskTitleInput.value),
-        description:
-          sanitizeInput(taskDescriptionInput.value) || "No Description",
+        // description:
+        //   sanitizeInput(taskDescriptionInput.value) || "No Description",
         category: categoryInput.value,
         priority: priorityInput.value,
         dueDate: dueDateInput.value,
@@ -568,6 +568,7 @@ tasksContainer.addEventListener("change", (event) => {
     const closestCard = event.target.closest(".task-card");
     const taskId = closestCard.dataset.id;
     const taskIndex = allTasks.findIndex((task) => task.id === taskId);
+    console.log(closestCard);
 
     if (taskIndex !== -1) {
       const detailsContainer = closestCard.querySelector(".task-details");
