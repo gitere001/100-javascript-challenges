@@ -7,7 +7,7 @@ const closeModalBtn = document.querySelector("#close-modal-btn");
 const submitTaskBtn = document.getElementById("submit-task");
 const messageFeedBack = document.querySelector(".message-feedback");
 const tasksContainer = document.querySelector(".task-display");
-const editTaskBtn = document.querySelector("#edit-task");
+const taskStatusUpdateSelect = document.getElementById("task-status-update");
 
 const taskTitleInput = document.getElementById("task-title");
 const titleError = document.querySelector(".title-error");
@@ -20,102 +20,92 @@ const dueDateError = document.querySelector(".due-date-error");
 const statusFilterElement = document.querySelector("#status");
 const timeFilterElement = document.getElementById("task-time-period");
 
-const allTasks = [
-  {
-    id: "1a6f1d8b-b623-4a9f-9397-2c3d2a982d1f",
-    title: "Finish reading JavaScript documentation",
-    description: "Complete the ES6 section and take notes for reference.",
-    priority: "medium",
-    category: "education",
-    dueDate: "2024-12-18T12:00",
-    status: "In Progress",
-  },
-  {
-    id: "7c4b2f62-cb8a-49db-91ff-8e0a9e918b6d",
-    title: "Plan family vacation itinerary",
-    description: "Include activities for kids and finalize hotel bookings.",
-    priority: "high",
-    category: "personal",
-    dueDate: "2024-12-20T09:30",
-    status: "Not Started",
-  },
-  {
-    id: "b3a756e8-ae77-4872-a3fa-59a9f3a82bb8",
-    title: "Organize team meeting for new project kickoff",
-    description:
-      "Discuss goals, deliverables, and assign tasks to team members.",
-    priority: "urgent",
-    category: "work",
-    dueDate: "2024-12-15T14:00",
-    status: "Completed",
-  },
-  {
-    id: "2b1d6f53-e61d-4ef1-8d6a-33d3a1f0a3fc",
-    title: "Prepare monthly financial report",
-    description: "Ensure accuracy and highlight key performance indicators.",
-    priority: "medium",
-    category: "finance",
-    dueDate: "2024-12-22T11:45",
-    status: "Cancelled",
-  },
-  {
-    id: "3df1c6e7-56f8-4c75-b47f-0247d6b9a38e",
-    title: "Schedule dentist appointment for annual checkup",
-    description: "Call the clinic to book a convenient time next week.",
-    priority: "low",
-    category: "health",
-    dueDate: "2024-12-25T16:15",
-    status: "Not Started",
-  },
-  {
-    id: "4e2d9a74-89f0-4f0a-a2ef-f3f93ab2d9d1",
-    title: "Revise business plan and update market analysis",
-    description: "Incorporate recent data trends and competitor insights.",
-    priority: "high",
-    category: "work",
-    dueDate: "2024-12-28T10:00",
-    status: "In Progress",
-  },
-  {
-    id: "5c3f8b79-77d1-483a-ae95-fc3b32ba1f8e",
-    title: "Buy groceries for the week",
-    description:
-      "Include fresh fruits, vegetables, and essential pantry items.",
-    priority: "low",
-    category: "personal",
-    dueDate: "2024-12-14T18:30",
-    status: "Completed",
-  },
-  {
-    id: "6d2b3c87-94a8-41db-bf0a-238f3d98c9a7",
-    title: "Create a workout plan for next month",
-    description: "Focus on strength training and improving endurance.",
-    priority: "medium",
-    category: "health",
-    dueDate: "2024-12-16T07:45",
-    status: "In Progress",
-  },
-  {
-    id: "7f3e1d9b-c7b9-432d-ae0d-b2f9a36dc8f2",
-    title: "Finalize design for website homepage",
-    description: "Review drafts and implement feedback from the client.",
-    priority: "urgent",
-    category: "work",
-    dueDate: "2024-12-19T20:00",
-    status: "Not Started",
-  },
-  {
-    id: "8a5d6e42-bd7b-4a5d-8f5c-94b7a6d7b1e4",
-    title: "Read 'Atomic Habits' and take notes",
-    description: "Focus on strategies to build effective habits.",
-    priority: "low",
-    category: "education",
-    dueDate: "2024-12-30T21:00",
-    status: "Not Started",
-  },
-];
+// Initialize allTasks by parsing JSON or using an empty array as fallback
+let allTasks = localStorage.getItem("tasks")
+  ? JSON.parse(localStorage.getItem("tasks"))
+  : [];
+
+function save() {
+  localStorage.setItem("tasks", JSON.stringify(allTasks)); // Store as JSON string
+}
+
+// Remove an item by index
+function removeItem(index) {
+  allTasks.splice(index, 1); // Remove the item at the specified index
+  localStorage.setItem("tasks", JSON.stringify(allTasks)); // Update localStorage
+}
+
+const categoryIcons = {
+  work: ["fas", "fa-briefcase"],
+  personal: ["fas", "fa-user"],
+  health: ["fas", "fa-heartbeat"],
+  finance: ["fas", "fa-dollar-sign"],
+  education: ["fas", "fa-graduation-cap"],
+  other: ["fas", "fa-ellipsis-h"],
+};
+
+const statusIcons = {
+  "Not Started": ["fas", "fa-hourglass-start"],
+  "In Progress": ["fas", "fa-spinner"],
+  Completed: ["fas", "fa-check-circle"],
+  Cancelled: ["fas", "fa-times-circle"],
+};
 
 const getDate = (date) => new Date(date).toISOString().split("T")[0];
+
+function clearAtMidnight() {
+  const currentTimestamp = new Date().getTime();
+  const lastClearTimestamp = localStorage.getItem("lastClearTimestamp");
+  console.log(lastClearTimestamp);
+
+  if (lastClearTimestamp) {
+    const lastClearDate = new Date(parseInt(lastClearTimestamp, 10));
+    const now = new Date();
+
+    // Check if a new day has started
+    if (
+      lastClearDate.getDate() !== now.getDate() ||
+      lastClearDate.getMonth() !== now.getMonth() ||
+      lastClearDate.getFullYear() !== now.getFullYear()
+    ) {
+      localStorage.removeItem("tasks");
+      console.log("LocalStorage cleared as it is now a new day.");
+      localStorage.setItem("lastClearTimestamp", currentTimestamp.toString());
+    }
+  } else {
+    // No timestamp found, clear and set it
+    localStorage.removeItem("tasks");
+    console.log("LocalStorage cleared because no timestamp was found.");
+    localStorage.setItem("lastClearTimestamp", currentTimestamp.toString());
+  }
+}
+
+function sanitizeInput(input) {
+  let sanitized = input.trim();
+  sanitized = sanitized.replace(/\s+/g, " ");
+  sanitized = sanitized
+    .split(" ")
+    .map((word) => {
+      if (word.length > 15) {
+        let chunks = [];
+        for (let i = 0; i < word.length; i += 15) {
+          chunks.push(word.slice(i, i + 15));
+        }
+        return chunks.join(" ");
+      }
+      return word;
+    })
+    .join(" ");
+  return sanitized;
+}
+
+function updateAppsDate() {
+  const today = new Date();
+
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = today.toLocaleDateString("en-US", options);
+  document.getElementById("current-date").textContent = `${formattedDate}`;
+}
 function showAddTaskModal() {
   const modalOverly = document.createElement("div");
   modalOverly.classList.add("overly");
@@ -133,10 +123,11 @@ function closeAddTaskModal() {
     taskTitleInput.style.border = "1px solid #ccc";
     dueDateInput.style.border = "1px solid #ccc";
     dueDateError.style.display = "none";
+    clearAddItemsModal();
   }
 }
 function validateInput(elementInput, errorElement) {
-  if (!elementInput.value.trim()) {
+  if (!sanitizeInput(elementInput.value)) {
     elementInput.style.border = "1px solid red";
     errorElement.style.display = "block";
   }
@@ -145,9 +136,7 @@ function validateInput(elementInput, errorElement) {
 function getTimeAndStatusFilters(timeFilterElement, statusFilterElement) {
   const timePeriod = timeFilterElement.value;
   const status = statusFilterElement.value;
-  // console.log(timePeriod, status);
   const todayDate = getDate(new Date());
-  // console.log(todayDate);
   function getLast7Dates() {
     const today = new Date();
     const dates = [];
@@ -169,17 +158,13 @@ function getTimeAndStatusFilters(timeFilterElement, statusFilterElement) {
       return allTasks.filter((task) => getDate(task.dueDate) === todayDate);
     }
     if (timePeriod === "past-week") {
-      // console.log('entered the blocked');
       const dates = getLast7Dates();
-      // console.log(dates);
       const result = allTasks.filter((task) =>
         dates.includes(getDate(task.dueDate))
       );
-      // console.log(result);
       return result;
     }
   }
-  // console.log('this is lastweek', filterByTime());
 
   function filterByAll() {
     if (status === "all-status") {
@@ -190,27 +175,10 @@ function getTimeAndStatusFilters(timeFilterElement, statusFilterElement) {
     }
   }
   const taskToDisplay = filterByAll();
-  // console.log(taskToDisplay);
   return taskToDisplay;
 }
 
 function createNewTaskCard(task) {
-  const categoryIcons = {
-    work: ["fas", "fa-briefcase"],
-    personal: ["fas", "fa-user"],
-    health: ["fas", "fa-heartbeat"],
-    finance: ["fas", "fa-dollar-sign"],
-    education: ["fas", "fa-graduation-cap"],
-    other: ["fas", "fa-ellipsis-h"],
-  };
-
-  const statusIcons = {
-    "Not Started": ["fas", "fa-hourglass-start"],
-    "In Progress": ["fas", "fa-spinner"],
-    Completed: ["fas", "fa-check-circle"],
-    Cancelled: ["fas", "fa-times-circle"],
-  };
-
   let categoryName;
   let categoryIcon;
   let statuName;
@@ -231,11 +199,9 @@ function createNewTaskCard(task) {
     statusIcon = statusIcons["Not Started"];
   }
 
-  const taskTitle = task.title ? task.title : "failed to load title";
-  const taskDescription = task.description
-    ? task.description
-    : "Failed to load Description";
-  const taskPriority = task.priority ? task.priority : "";
+  const taskTitle = task.title;
+  const taskDescription = task.description.trim() || "No Description";
+  const taskPriority = task.priority;
   const taskDueDate = task.dueDate
     ? getDate(task.dueDate).replace("-", "/").replace("-", "/")
     : "";
@@ -260,6 +226,7 @@ function createNewTaskCard(task) {
 
   const titleSectionPriority = document.createElement("p");
   titleSectionPriority.textContent = taskPriority;
+  titleSectionPriority.classList.add(taskPriority);
 
   titleSection.appendChild(titleSectionH2);
   titleSection.appendChild(titleSectionPriority);
@@ -351,63 +318,143 @@ function createNewTaskCard(task) {
   return newDiv;
 }
 
-function displayTasks() {
-  const tasksToDisplay = getTimeAndStatusFilters(
-    timeFilterElement,
-    statusFilterElement
-  );
-  tasksToDisplay.forEach((task) => {
-    const taskCard = createNewTaskCard(task);
-    tasksContainer.appendChild(taskCard);
+function updateSelectedOption(filterElement) {
+  Array.from(filterElement.children).forEach((option) => {
+    // Set the 'selected' attribute for the matching option
+    if (option.value === filterElement.value) {
+      option.setAttribute("selected", ""); // Explicitly set the 'selected' attribute
+    } else {
+      option.removeAttribute("selected"); // Remove 'selected' from non-matching options
+    }
   });
 }
+function displayNoTasksFound() {
+  tasksContainer.innerHTML = "";
+  const noTaskDiv = document.createElement("div");
+  const noTaskMessage = document.createElement("p");
+  noTaskMessage.textContent = "No Tasks Found By Above filters";
+  noTaskDiv.appendChild(noTaskMessage);
 
+  noTaskDiv.classList.add("no-task");
+  tasksContainer.appendChild(noTaskDiv);
+}
+
+function displayTasks(tasksArray) {
+  if (tasksArray.length > 0) {
+    tasksArray.forEach((task) => {
+      const taskCard = createNewTaskCard(task);
+      tasksContainer.appendChild(taskCard);
+    });
+  } else {
+    displayNoTasksFound();
+  }
+}
+
+let isNewTask = true;
 function submitTask(e) {
   e.preventDefault();
 
-  const title = taskTitleInput.value.trim();
-  const description = taskDescriptionInput.value.trim() || "No Description";
-  const priority = priorityInput.value.trim();
-  const category = categoryInput.value.trim();
-  const dueDate = dueDateInput.value.trim();
+  if (isNewTask) {
+    const filterStatusValue = statusFilterElement.value;
+    const title = sanitizeInput(taskTitleInput.value);
+    const description =
+      sanitizeInput(taskDescriptionInput.value) || "No Description";
+    const priority = priorityInput.value.trim();
+    const category = categoryInput.value.trim();
+    const dueDate = dueDateInput.value.trim();
 
-  if (!title || !dueDate) {
-    validateInput(taskTitleInput, titleError);
-    validateInput(dueDateInput, dueDateError);
-  } else {
-    try {
-      const task = {
-        id: uuidv4(),
-        title,
-        description,
-        priority,
-        category,
-        dueDate,
-        status: "Not Started",
-      };
+    if (!title || !dueDate) {
+      validateInput(taskTitleInput, titleError);
+      validateInput(dueDateInput, dueDateError);
+    } else {
+      try {
+        const task = {
+          id: uuidv4(),
+          title,
+          description,
+          priority,
+          category,
+          dueDate,
+          status: "Not Started",
+        };
+        const taskDueDate = parseInt(new Date(task.dueDate).getDate());
+        const todayDate = parseInt(new Date().getDate());
+        if (
+          (filterStatusValue === "all-status" ||
+            filterStatusValue === task.status) &&
+          taskDueDate <= todayDate
+        ) {
+          const fistChildCard = tasksContainer.firstElementChild;
+          const card = createNewTaskCard(task);
+          if (fistChildCard) {
+            tasksContainer.insertBefore(card, fistChildCard);
+          } else {
+            tasksContainer.appendChild(card);
+          }
+          const noTask = tasksContainer.querySelector(".no-task");
+          if (noTask) {
+            noTask.remove();
+          }
+        }
 
-      allTasks.push(task);
-      messageFeedBack.textContent = "Task Added Successfully!";
-      messageFeedBack.style.display = "block";
-      messageFeedBack.classList.add("success");
-      console.log(allTasks);
-      setTimeout(() => {
-        messageFeedBack.style.display = "none";
-        messageFeedBack.textContent = "";
-        messageFeedBack.classList.remove("success");
-        closeAddTaskModal();
-      }, 2000);
-    } catch (error) {
-      messageFeedBack.textContent = "An Error Occurred";
-      messageFeedBack.classList.add("error");
-      messageFeedBack.style.display = "block";
-      setTimeout(() => {
-        messageFeedBack.style.display = "None";
-        messageFeedBack.textContent = "";
-        messageFeedBack.classList.remove("error");
-      }, 2000);
+        allTasks.push(task);
+        save();
+        messageFeedBack.textContent = "Task Added Successfully!";
+        messageFeedBack.style.display = "block";
+        messageFeedBack.classList.add("success");
+        setTimeout(() => {
+          messageFeedBack.style.display = "none";
+          messageFeedBack.textContent = "";
+          messageFeedBack.classList.remove("success");
+          taskTitleInput.value = "";
+          taskDescriptionInput.value = "";
+          dueDateInput.value = "";
+          priorityInput.selected = "";
+          categoryInput.selected = "";
+          closeAddTaskModal();
+          // displayTasks(getTimeAndStatusFilters(timeFilterElement, statusFilterElement))
+        }, 2000);
+      } catch (error) {
+        messageFeedBack.textContent = "An Error Occurred";
+        messageFeedBack.classList.add("error");
+        messageFeedBack.style.display = "block";
+        console.log(error);
+        setTimeout(() => {
+          messageFeedBack.style.display = "None";
+          messageFeedBack.textContent = "";
+          messageFeedBack.classList.remove("error");
+        }, 2000);
+      }
     }
   }
+}
+
+function clearAddItemsModal() {
+  taskTitleInput.value = "";
+  taskDescriptionInput.value = "";
+  priorityInput.value = "medium";
+  categoryInput.value = "personal";
+  dueDateInput.value = "";
+}
+function updateMinDate(formated) {
+  let dateToFormat = formated ? new Date(formated) : new Date();
+
+  const year = dateToFormat.getFullYear();
+  let month = dateToFormat.getMonth() + 1; // Months are 0-based
+  let day = dateToFormat.getDate();
+  let hours = dateToFormat.getHours();
+  let minutes = dateToFormat.getMinutes();
+
+  // Add leading zero if necessary
+  month = month < 10 ? "0" + month : month;
+  day = day < 10 ? "0" + day : day;
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+
+  const formatedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+  dueDateInput.min = formatedDate;
+
+  return formatedDate;
 }
 
 textArea.addEventListener("input", () => {
@@ -426,26 +473,156 @@ dueDateInput.addEventListener("input", () => {
     dueDateError.style.display = "none";
   }
 });
-// tasksContainer.addEventListener('click', (event)=> {
-//   const closestCard = event.target.closest('.task-card')
-//   console.log(closestCard);
-//   const closestEditBtn = closestCard.children[3].children[1]
-//   if (closestEditBtn) {
-//     // const tastToEdit = allTasks.find(task => task.)
+tasksContainer.addEventListener("click", (event) => {
+  const elementClicked = event.target;
+  if (elementClicked.classList.contains("edit-task-btn")) {
+    isNewTask = false;
+    const editButton = event.target;
+    const closestCard = editButton.closest(".task-card");
 
-//     showAddTaskModal()
-//     const title = closestCard.querySelector('.task-title h2').textContent
-//     const priority = closestCard.querySelector('p').textContent
-//     const category = closestCard.querySelector('.task-details p:nth-child(2)').textContent
-//     const description = closestCard.querySelector('.task-card > p').textContent
-//     const duedate = closestCard.querySelector('.task-details p:nth-child(1) span').textContent
-//     console.log(title, priority, category, description, duedate);
-//     console.log(addTaskModal);
-//     console.log(closestCard);
-//   }
+    const id = closestCard.dataset.id;
+    const title = closestCard.querySelector(".task-title h2").textContent;
+    const priority = closestCard.querySelector("p").textContent;
+    const category = closestCard.querySelector(
+      ".task-details p:nth-child(2)"
+    ).textContent;
+    const description = closestCard.querySelector(".task-card > p").textContent;
+    const duedate = closestCard.querySelector(
+      ".task-details p:nth-child(1) span"
+    ).textContent;
+    addTaskModal.style.display = "block";
+    taskTitleInput.value = title;
+    taskDescriptionInput.value =
+      description === "No Description" ? "" : description;
+    priorityInput.value = priority;
+    categoryInput.value = category;
+    dueDateInput.value = updateMinDate(duedate);
+    submitTaskBtn.id = "update-task";
+    submitTaskBtn.textContent = "Update";
+    showAddTaskModal();
+    submitTaskBtn.addEventListener("click", () => {
 
-// })
-displayTasks();
+      const updatedDetails = {
+        id,
+        title: sanitizeInput(taskTitleInput.value),
+        description:
+          sanitizeInput(taskDescriptionInput.value) || "No Description",
+        category: categoryInput.value,
+        priority: priorityInput.value,
+        dueDate: dueDateInput.value,
+      };
+      if (!updatedDetails.title || !updatedDetails.dueDate) {
+        validateInput(taskTitleInput, titleError);
+        validateInput(dueDateInput, dueDateError);
+      } else {
+        const index = allTasks.findIndex((task) => task.id === id);
+        if (index !== -1) {
+          const taskToUpdate = allTasks[index];
+          updatedDetails.status = taskToUpdate.status;
+          allTasks.splice(index, 1, updatedDetails);
+          save();
+          messageFeedBack.textContent = "Task Updated Successfully";
+          messageFeedBack.classList.add("success");
+          messageFeedBack.style.display = "block";
+          setTimeout(() => {
+            messageFeedBack.textContent = "";
+            messageFeedBack.classList.remove("success");
+            messageFeedBack.style.display = "none";
+            submitTaskBtn.id = "add-task";
+            submitTaskBtn.textContent = "Add";
+            isNewTask = true;
+            console.log(tasksContainer.children);
+            closestCard.remove()
+            clearAddItemsModal();
+            closeAddTaskModal();
+            displayTasks(
+              getTimeAndStatusFilters(timeFilterElement, statusFilterElement)
+            );
+            window.location.reload();
+
+          }, 2000);
+        } else {
+          alert("Try again later");
+        }
+      }
+    });
+  } else if (elementClicked.id === "delete-task") {
+    const closestCard = elementClicked.closest(".task-card");
+    const id = closestCard.dataset.id;
+    const taskIndex = allTasks.findIndex((task) => task.id === id);
+    if (taskIndex !== -1) {
+      allTasks.splice(taskIndex, 1);
+      save();
+      closestCard.remove();
+      if (tasksContainer.children.length === 0) {
+        displayNoTasksFound();
+      }
+    } else {
+      alert("Failed to delete task try again later");
+    }
+  }
+});
+tasksContainer.addEventListener("change", (event) => {
+  const changedStatus = event.target;
+  if (changedStatus.id === "task-status-update") {
+    const closestCard = event.target.closest(".task-card");
+    const taskId = closestCard.dataset.id;
+    const taskIndex = allTasks.findIndex((task) => task.id === taskId);
+
+    if (taskIndex !== -1) {
+      const detailsContainer = closestCard.querySelector(".task-details");
+      const pToChange = detailsContainer.querySelector("p:last-child");
+      if (pToChange) {
+        const option = Array.from(changedStatus.children).find(
+          (opt) => opt.value === changedStatus.value
+        );
+        if (option) {
+          const optionName = option.textContent;
+          allTasks[taskIndex].status = optionName;
+          save();
+          const newStatusP = document.createElement("p");
+          newStatusP.className = optionName.replace(" ", "");
+          const newI = document.createElement("i");
+          newI.classList.add(...statusIcons[optionName]);
+          const newSpan = document.createElement("span");
+          newSpan.textContent = optionName;
+
+          newStatusP.appendChild(newI);
+          newStatusP.appendChild(newSpan);
+          detailsContainer.replaceChild(newStatusP, pToChange);
+        }
+      }
+    } else {
+      alert("Error while Updating Task");
+    }
+  }
+});
+
+updateMinDate();
+updateAppsDate();
+displayTasks(getTimeAndStatusFilters(timeFilterElement, statusFilterElement));
+clearAtMidnight();
+timeFilterElement.addEventListener("change", () => {
+  tasksContainer.innerHTML = "";
+  const tasksToDisplay = getTimeAndStatusFilters(
+    timeFilterElement,
+    statusFilterElement
+  );
+
+  console.log(timeFilterElement);
+
+  displayTasks(tasksToDisplay);
+});
+statusFilterElement.addEventListener("change", () => {
+  tasksContainer.innerHTML = "";
+
+  const tasksToDisplay = getTimeAndStatusFilters(
+    timeFilterElement,
+    statusFilterElement
+  );
+  displayTasks(tasksToDisplay);
+});
+
 addTaskBtn.addEventListener("click", showAddTaskModal);
 closeModalBtn.addEventListener("click", closeAddTaskModal);
 submitTaskBtn.addEventListener("click", submitTask);

@@ -45,7 +45,7 @@
         <label for="priority">Priority</label>
         <select name="priority" id="priority">
           <option value="low">Low</option>
-          <option value="medium">Medium</option>
+          <option value="medium" selected>Medium</option>
           <option value="high">High</option>
           <option value="urgent">Urgent</option>
         </select>
@@ -55,7 +55,7 @@
         <label for="category">Category</label>
         <select name="category" id="category">
           <option value="work">Work</option>
-          <option value="personal">Personal</option>
+          <option value="personal" selected>Personal</option>
           <option value="health">Health</option>
           <option value="finance">Finance</option>
           <option value="education">Education</option>
@@ -79,7 +79,7 @@
       <img src="logo.webp" alt="" />
       <div class="title">
         <h1>Todo List</h1>
-        <p>December 18, 2024</p>
+        <p id="current-date"></p>
       </div>
       <button class="btn" id="add-task-btn">+ Add Task</button>
     </header>
@@ -90,7 +90,7 @@
           <select name="" id="task-time-period">
             <option value="today">Today's Task</option>
             <option value="past-week">Past Week</option>
-            <option value="all" selected>All Tasks</option>
+            <option value="all">All Tasks</option>
           </select>
         </fieldset>
         <fieldset>
@@ -99,16 +99,14 @@
             <option value="all-status">All Status</option>
             <option value="Not Started">Not Started</option>
             <option value="In Progress">In Progress</option>
-            <option value="Completed" selected>Completed</option>
+            <option value="Completed">Completed</option>
             <option value="Cancelled">Cancelled</option>
           </select>
         </fieldset>
       </section>
       <section class="task-display">
-        <div class="no-task">
-          <p>No Task Found</p>
-        </div>
-        <div class="task-card">
+        
+        <!-- <div class="task-card">
           <div class="task-title">
             <h2>Complete the JavaScript functions module.</h2>
             <p>HIGH</p>
@@ -138,7 +136,7 @@
             <button id="edit-task" class="edit-task-btn">Edit task</button>
             <button id="delete-task">Delete Task</button>
           </div>
-        </div>
+        </div> -->
 
         <!-- <div class="task-card">
           <div class="task-title">
