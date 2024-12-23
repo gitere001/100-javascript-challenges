@@ -213,7 +213,8 @@ fieldset {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
+  border: 2px solid #ccc;
   padding: 15px;
 
 }
@@ -237,22 +238,17 @@ fieldset {
   margin-left: auto;
 
 }
-.task-card > p {
-  opacity: 0.9;
-  font-size: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-  max-width: 100%;
-  white-space: auto;
-}
+
 .task-details {
   display: flex;
   margin-bottom: 10px;
   align-items: center;
   gap: 10px;
-  font-size: 11px;
+  font-size: 13px;
   font-style: italic;
+}
+.task-details p:nth-child(2) i {
+  display: none;
 }
 
 
@@ -393,10 +389,6 @@ fieldset {
     max-width: calc((100% - 30px) / 2);
   }
 
-
-  .task-card > p {
-    /* margin-top: auto; */
-  }
   .task-details {
     margin-top: auto;
   }
