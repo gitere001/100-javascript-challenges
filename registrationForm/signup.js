@@ -45,24 +45,38 @@ function removeSubmitModal() {
 
 function submitForm(e) {
   e.preventDefault();
+
+  let isValid = true;
+
   if (!emailInput.value || !validateEmail(emailInput.value)) {
     validateInput(emailInput, emailError, validateEmail);
     emailError.style.display = "block";
+    isValid = false;
+  } else {
+    emailError.style.display = "none";
   }
+
   if (!usernameInput.value || !validateUsername(usernameInput.value)) {
     validateInput(usernameInput, usernameError, validateUsername);
     usernameError.style.display = "block";
+    isValid = false;
+  } else {
+    usernameError.style.display = "none";
   }
+
   if (!passwordInput.value || !validatePassword(passwordInput.value)) {
     validateInput(passwordInput, passwordError, validatePassword);
     passwordError.style.display = "block";
+    isValid = false;
+  } else {
+    passwordError.style.display = "none";
   }
-  if (passwordInput.value && usernameInput.value && emailInput.value) {
 
+  if (isValid) {
     showSubmitModal();
   }
-
 }
+
 function validateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
