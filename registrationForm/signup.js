@@ -48,7 +48,7 @@ function submitForm(e) {
 
   let isValid = true;
 
-  if (!emailInput.value || !validateEmail(emailInput.value)) {
+  if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
     validateInput(emailInput, emailError, validateEmail);
     emailError.style.display = "block";
     isValid = false;
@@ -56,7 +56,7 @@ function submitForm(e) {
     emailError.style.display = "none";
   }
 
-  if (!usernameInput.value || !validateUsername(usernameInput.value)) {
+  if (!usernameInput.value.trim() || !validateUsername(usernameInput.value.trim())) {
     validateInput(usernameInput, usernameError, validateUsername);
     usernameError.style.display = "block";
     isValid = false;
@@ -64,7 +64,7 @@ function submitForm(e) {
     usernameError.style.display = "none";
   }
 
-  if (!passwordInput.value || !validatePassword(passwordInput.value)) {
+  if (!passwordInput.value.trim() || !validatePassword(passwordInput.value.trim())) {
     validateInput(passwordInput, passwordError, validatePassword);
     passwordError.style.display = "block";
     isValid = false;
