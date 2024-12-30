@@ -22,7 +22,7 @@ body {
   background-color: white;
   max-width: 400px;
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.5);
   visibility: hidden;
@@ -30,6 +30,7 @@ body {
   padding: 0 20px 20px;
   font-family: "poppins", sans-serif;
   transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+  width: 80%;
 }
 .popup-display {
   transform: translate(-50%, -50%) scale(1);
@@ -95,7 +96,7 @@ header > p {
 
 header > p > a {
   color: var(--accent);
-  
+
 }
 
 fieldset {
@@ -109,6 +110,8 @@ fieldset > small {
   left: 50%;
   color: red;
   transform: translate(-50%);
+  width: 100%;
+  text-align: center;
   display: none;
 }
 
@@ -196,4 +199,11 @@ fieldset:nth-of-type(3) > span {
   cursor: pointer;
   color: #027b8b;
   font-weight: bold;
+}
+
+@media (min-width: 500px) {
+  .popup {
+    top: 50%;
+    width: fit-content;
+  }
 }
