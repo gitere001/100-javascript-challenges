@@ -45,15 +45,15 @@ function removeSubmitModal() {
 
 function submitForm(e) {
   e.preventDefault();
-  if (!emailInput.value) {
+  if (!emailInput.value || !validateEmail(emailInput.value)) {
     validateInput(emailInput, emailError, validateEmail);
     emailError.style.display = "block";
   }
-  if (!usernameInput.value) {
+  if (!usernameInput.value || !validateUsername(usernameInput.value)) {
     validateInput(usernameInput, usernameError, validateUsername);
     usernameError.style.display = "block";
   }
-  if (!passwordInput.value) {
+  if (!passwordInput.value || !validatePassword(passwordInput.value)) {
     validateInput(passwordInput, passwordError, validatePassword);
     passwordError.style.display = "block";
   }
