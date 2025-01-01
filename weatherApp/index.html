@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+          </svg>
+          <h1>Weather Dashboard</h1>
+        </div>
+        <section class="search-container">
+          <div class="search-bar">
+            <input
+              type="text"
+              id="search"
+              placeholder="Search for a city..."
+              aria-label="Search for a city"
+            />
+            <svg
+              class="search-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </div>
+          <div class="suggestion-cities"></div>
+        </section>
+      </header>
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+      </div>
+      <main>
+        <div class="hidden display-error" id="main-display-error">
+          <img src="not_found2.jpg" alt="">
+          <p>Weather details not found. Try another city.</p>
+
+       </div>
+
+        <article id="main-card">
+
+        </article>
+        <section class="days-forecast">
+          <div class="hidden display-error" id="forecast-display-error">
+            <img src="not_found2.jpg" alt="">
+            <p>Weather details not found. Try another city.</p>
+
+         </div>
+
+        </section>
+      </main>
+    </div>
+    <script src="autocomplete.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
