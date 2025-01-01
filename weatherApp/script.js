@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       mainContainer.style.display = "block";
       spiner.classList.add("hidden");
-    }, 1000);
+    }, 600);
   }
 
   function showError(error) {
@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
         inputElement.value = "";
         spiner.classList.add("hidden");
         mainContainer.style.display = "block";
-      }, 1000);
+      }, 600);
     }
   });
 

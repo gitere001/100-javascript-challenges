@@ -6,18 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchCities() {
     try {
-      const response = await fetch("./cities.json");
+      const response = await fetch("cleanCityNames.json");
       cities = await response.json();
-
     } catch (error) {
       console.error("Error fetching cities:", error);
     }
   }
 
   fetchCities().then(() => {
-    const uniqueCities = Array.from(new Set(cities.map((city) => city.name)));
-
-    const citiesNames = uniqueCities.sort();
+    const citiesNames = cities.map((city) => city.name);
 
     inputElement.addEventListener("keyup", () => {
       const inputValue = inputElement.value.trim();
@@ -42,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cityp.textContent = city;
         if (city === "City not found") {
           cityp.classList.add("no-city");
-          
         }
         autoCompleteContainer.appendChild(cityp);
       });
