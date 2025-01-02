@@ -25,12 +25,13 @@ You can view the app here: [Live Demo](https://weather-app-james-gitere.vercel.a
 
 ## Screenshots
 
-### Desktop and Mobile View
+### Desktop and Mobile view
 
-<div style="display: flex; gap: 20px; width: 800px;">
-    <img src="./desktop-weather-app.png" alt="Desktop View" style="flex: 1; width: 390px; height: 300px;" />
-    <img src="./mobile-weather-app.png" alt="Mobile View" style="flex: 1; width: 390px; height: 300px;" />
+<div style="display: flex; flex-direction: column; gap: 20px;">
+    <img src="./desktop-weather-app.png" alt="Desktop View" style="flex: 1; width: 500px; height: 300px;" />
+    <img src="./mobile-weather-app.png" alt="Mobile View" style="flex: 1; width: 500px; height: 900px;" />
 </div>
+
 
 ## Installation
 
