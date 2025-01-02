@@ -39,4 +39,4 @@ If you would like to run this app locally, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/gitere001/100-javascript-challenges.git
-2. ```cd 100-javascript-challenges/weatherApp
+2. ```bashcd 100-javascript-challenges/weatherApp
