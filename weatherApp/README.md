@@ -25,11 +25,12 @@ You can view the app here: [Live Demo](https://weather-app-james-gitere.vercel.a
 
 ## Screenshots
 
-### Desktop View
-![Desktop View](./desktop-weather-app.png)
+### Desktop and Mobile View
 
-### Mobile View
-![Mobile View](./mobile-weather-app.png)
+<div style="display: flex; gap: 20px; width: 800px;">
+    <img src="./desktop-weather-app.png" alt="Desktop View" style="flex: 1; width: 390px; height: 300px;" />
+    <img src="./mobile-weather-app.png" alt="Mobile View" style="flex: 1; width: 390px; height: 300px;" />
+</div>
 
 ## Installation
 
@@ -38,4 +39,4 @@ If you would like to run this app locally, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/gitere001/100-javascript-challenges.git
-2. cd 100-javascript-challenges/weatherApp
+2. ```cd 100-javascript-challenges/weatherApp
